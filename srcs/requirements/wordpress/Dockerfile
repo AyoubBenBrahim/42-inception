@@ -12,7 +12,8 @@ COPY ./tools/* ./scripts
 RUN chmod +x /scripts/*.sh \
 	&& sh /scripts/update_php_ini.sh
 
-
+RUN mkdir -p /var/www/html \
+&& chmod 777 /var/www/html
 
 
 
