@@ -1,0 +1,86 @@
+
+
+ php-cgi php-common php-fpm php-pear php-mbstring php-zip php-net-socket php-gd php-xml-util php-gettext php-mysql php-bcmath unzip wget git -y
+
+====
+
+FROM alpine
+
+RUN apk update
+
+RUN apk add wget php-fpm
+
+RUN apk add php7-common php7-iconv php7-json php7-gd php7-curl \
+    php7-xml php7-mysqli php7-imap php7-cgi fcgi php7-pdo php7-pdo_mysql \
+    php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom
+
+RUN apk add php7 php7-fpm php7-opcache php7-session php7-mbstring
+RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
+RUN apk add php7-gd php7-mysqli php7-zlib php7-curl php7-redis
+
+RUN apk add openrc
+RUN openrc && touch /run/openrc/softlevel
+
+RUN wget http://wordpress.org/latest.tar.gz
+RUN mkdir -p www
+RUN tar -xzvf latest.tar.gz && rm -rf latest.tar.gz && cp -Rf wordpress www/
+RUN rm -rf wordpress
+RUN wget https://downloads.wordpress.org/plugin/redis-cache.2.0.21.zip
+RUN unzip redis-cache.2.0.21.zip && rm -rf redis-cache.2.0.21.zip
+RUN cp -Rf redis-cache /www/wordpress/wp-content/plugins/  
+COPY ./tools/entry.sh .
+COPY ./conf/wp-config.php ./www/wordpress/wp-config.php
+RUN chmod +x entry.sh
+
+= entry.sh =
+#!/bin/sh
+sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/' /etc/php7/php-fpm.d/www.conf
+sed -i 's/user = nobody/user = root/' /etc/php7/php-fpm.d/www.conf
+sed -i 's/group = root/group = root/' /etc/php7/php-fpm.d/www.conf
+#rc-service php-fpm7 restart
+#rc-service php-fpm7 stop
+sed -i "s/__wp_user__/${MYSQL_USER}/g" /www/wordpress/wp-config.php
+sed -i "s/__wp_password__/${MYSQL_PASSWORD}/g" /www/wordpress/wp-config.php
+cp /www/wordpress/wp-content/plugins/redis-cache/includes/object-cache.php /www/wordpress/wp-content/object-cache.php
+/usr/sbin/php-fpm7 -F -R
+
+
+
+=========================
+zz
+
+RUN apt-get update -y
+
+RUN apt-get upgrade -y 
+
+EXPOSE 9000
+
+RUN apt install -y vim
+RUN apt install -y unzip
+RUN apt install -y wget
+RUN apt install -y php-fpm php-mysql
+RUN apt upgrade -y
+RUN mkdir -p /var/www/html
+COPY ./tools/wp-config.php /
+RUN service php7.3-fpm start
+RUN service php7.3-fpm stop
+RUN chmod 777 /var/www/html/
+COPY ./tools/www.conf /etc/php/7.3/fpm/pool.d/
+COPY ./tools/php-fpm.conf /etc/php/7.3/fpm/
+COPY ./tools/start.sh ./start.sh
+COPY ./tools/redis-cache.tar.gz .
+RUN tar -xzvf ./redis-cache.tar.gz redis-cache
+#RUN mv /redis-cache /var/www/html/wp-content/plugins/
+ENTRYPOINT ["bash","start.sh"]
+
+
+
+=== start.sh ===
+wget http://wordpress.org/latest.tar.gz &&\
+    tar -xzvf latest.tar.gz &&\
+    rm latest.tar.gz && cp -rf /wordpress/* /var/www/html && cp -rf  /wp-config.php /var/www/html
+
+chown www-data:www-data -R /var/www/html/*
+mv /redis-cache /var/www/html/wp-content/plugins/
+exec php-fpm7.3 --nodaemonize
+
