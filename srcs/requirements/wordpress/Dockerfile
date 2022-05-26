@@ -38,18 +38,22 @@ LABEL version="1.0" \
  maintainer="ayoubbrs@gmail.com" \
  build-date=${BUILD_DATE}
 
+# RUN apt-get update \
+# 	&& apt-get upgrade -y \
+# 	php-cgi php-common php-fpm php-pear php-mbstring \
+# 	php-zip php-net-socket php-gd php-xml-util \
+# 	php-gettext php-mysql php-bcmath -y \
+# 	&& apt-get autoclean && apt-get autoremove
+
 RUN apt-get update \
 	&& apt-get upgrade -y \
-	php-cgi php-common php-fpm php-pear php-mbstring \
-	php-zip php-net-socket php-gd php-xml-util \
-	php-gettext php-mysql php-bcmath -y \
-	&& apt-get autoclean && apt-get autoremove
+	php-fpm php-mysql
 
 COPY --from=build-stage /var/ /var/
 RUN sh /var/www/html/scripts/update_php_ini.sh \
 chown -R www-data:www-data /var/www/html/
 
-ENTRYPOINT sh /var/www/html/scripts/update_wp-config.sh
+ENTRYPOINT sh /var/www/html/scripts/update_wp-config.sh && sleep 600
 
 # ENTRYPOINT ["sleep", "600"]
    

@@ -7,5 +7,5 @@ sed -i "s/password_here/$DB_PASSWORD/g" /var/www/html/wp-config.php
 # echo ${DB_USER} >> FILE
 # echo ${DB_PASSWORD} >> FILE
 
-sleep 600
+# sleep 600
 

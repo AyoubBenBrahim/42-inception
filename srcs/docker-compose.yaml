@@ -4,7 +4,7 @@ services:
 #   build: 
 #    context: ./requirements/nginx
 #    args:
-#     BUILD_DATE: Thu May 26 18:04:41 +01 2022
+#     BUILD_DATE: Thu May 26 19:44:59 +01 2022
 #   image: nginx:${TAG}
 #   container_name: nginx
 #   ports:
@@ -17,13 +17,13 @@ services:
   # depends_on:
   #  - mariadb
   # networks:
-  #  - inception_net
+  #  - inception_network
   env_file:
    - .env
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Thu May 26 18:04:41 +01 2022
+    BUILD_DATE: Thu May 26 19:44:59 +01 2022
 #   ports:
 #    - '9000:9000'
   # volumes:
