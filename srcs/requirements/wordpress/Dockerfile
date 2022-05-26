@@ -2,10 +2,10 @@ FROM debian:buster AS build-stage
 
 RUN apt-get update \
    && apt-get upgrade -y \
-   && apt-get install vim curl unzip wget git -y \
-	php-cgi php-common php-fpm php-pear php-mbstring \
-	php-zip php-net-socket php-gd php-xml-util \
-	php-gettext php-mysql php-bcmath -y
+   && apt-get install vim curl unzip wget git -y 
+	# php-cgi php-common php-fpm php-pear php-mbstring \
+	# php-zip php-net-socket php-gd php-xml-util \
+	# php-gettext php-mysql php-bcmath -y
 
 RUN mkdir scripts
 COPY ./tools/* ./scripts/
@@ -14,8 +14,8 @@ RUN chmod +x /scripts/*.sh
 
 RUN mkdir -p /var/www/html \
 	&& chmod 777 /var/www/html \
-	&& mv ./scripts /var/www/html/ \
-	&& sh /var/www/html/scripts/update_php_ini.sh
+	&& mv ./scripts /var/www/html/
+	# && sh /var/www/html/scripts/update_php_ini.sh
 
 #	&& chown -R www-data:www-data /var/www/html/
 
@@ -31,21 +31,27 @@ RUN wget http://wordpress.org/latest.tar.gz \
 
 FROM debian:buster AS final-stage
 
-LABEL version="1.0"
-LABEL description="This Is a wordpress Image"
-LABEL maintainer="ayoubbrs@gmail.com"
 ARG BUILD_DATE
-LABEL build-date=${BUILD_DATE}
 
+LABEL version="1.0" \
+ description="This Is a wordpress Image" \
+ maintainer="ayoubbrs@gmail.com" \
+ build-date=${BUILD_DATE}
 
+RUN apt-get update \
+	&& apt-get upgrade -y \
+	php-cgi php-common php-fpm php-pear php-mbstring \
+	php-zip php-net-socket php-gd php-xml-util \
+	php-gettext php-mysql php-bcmath -y
 
-COPY --from=build-stage /my_certs/* /etc/ssl/
-COPY --from=build-stage /etc/nginx /etc/nginx/
+COPY --from=build-stage /var/ /var/
+# COPY --from=build-stage /etc/nginx /etc/nginx/
+RUN sh /var/www/html/scripts/update_php_ini.sh
 
 
 ENTRYPOINT sh /var/www/html/scripts/update_wp-config.sh
 
-#ENTRYPOINT ["sleep", "600"]
+# ENTRYPOINT ["sleep", "600"]
    
    
 

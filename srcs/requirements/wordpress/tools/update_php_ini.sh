@@ -6,5 +6,3 @@ sed -i "s/upload_max_filesize =.*/upload_max_filesize = 32M/g" /etc/php/7.3/fpm/
 sed -i "s/;date.timezone =.*/date.timezone = Africa\/Casablanca/g" /etc/php/7.3/fpm/php.ini
 
 #sudo systemctl restart php7.3-fpm
-
-
