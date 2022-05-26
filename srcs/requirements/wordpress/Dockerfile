@@ -8,15 +8,25 @@ RUN apt-get update \
 	php-gettext php-mysql php-bcmath -y
 
 RUN mkdir scripts
-COPY ./tools/* ./scripts
+COPY ./tools/* ./scripts/
 RUN chmod +x /scripts/*.sh \
 	&& sh /scripts/update_php_ini.sh
 
 RUN mkdir -p /var/www/html \
-&& chmod 777 /var/www/html
+	&& chmod 777 /var/www/html 
+#	&& chown -R www-data:www-data /var/www/html/
 
+WORKDIR /var/www/html
+RUN wget http://wordpress.org/latest.tar.gz \
+	&& tar -xzvf latest.tar.gz && rm -rf latest.tar.gz && cp -Rf wordpress/* . \
+	&& rm -rf wordpress \
+	&& cp wp-config-sample.php wp-config.php \
+	&& sh /scripts/update_wp-config.sh 
+#	&& chown -R www-data:www-data /var/www/html/
+	
+#RUN cp -rf  /wp-config.php /var/www/html
 
-
+#WORKDIR /
 
 ENTRYPOINT ["sleep", "600"]
    
