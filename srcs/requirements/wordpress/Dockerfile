@@ -9,26 +9,43 @@ RUN apt-get update \
 
 RUN mkdir scripts
 COPY ./tools/* ./scripts/
-RUN chmod +x /scripts/*.sh \
-	&& sh /scripts/update_php_ini.sh
+RUN chmod +x /scripts/*.sh 
+	# && sh /scripts/update_php_ini.sh
 
 RUN mkdir -p /var/www/html \
-	&& chmod 777 /var/www/html 
+	&& chmod 777 /var/www/html \
+	&& mv ./scripts /var/www/html/ \
+	&& sh /var/www/html/scripts/update_php_ini.sh
+
 #	&& chown -R www-data:www-data /var/www/html/
 
 WORKDIR /var/www/html
 RUN wget http://wordpress.org/latest.tar.gz \
 	&& tar -xzvf latest.tar.gz && rm -rf latest.tar.gz && cp -Rf wordpress/* . \
 	&& rm -rf wordpress \
-	&& cp wp-config-sample.php wp-config.php \
-	&& sh /scripts/update_wp-config.sh 
+	&& cp wp-config-sample.php wp-config.php
 #	&& chown -R www-data:www-data /var/www/html/
 	
-#RUN cp -rf  /wp-config.php /var/www/html
 
 #WORKDIR /
 
-ENTRYPOINT ["sleep", "600"]
+FROM debian:buster AS final-stage
+
+LABEL version="1.0"
+LABEL description="This Is a wordpress Image"
+LABEL maintainer="ayoubbrs@gmail.com"
+ARG BUILD_DATE
+LABEL build-date=${BUILD_DATE}
+
+
+
+COPY --from=build-stage /my_certs/* /etc/ssl/
+COPY --from=build-stage /etc/nginx /etc/nginx/
+
+
+ENTRYPOINT sh /var/www/html/scripts/update_wp-config.sh
+
+#ENTRYPOINT ["sleep", "600"]
    
    
 

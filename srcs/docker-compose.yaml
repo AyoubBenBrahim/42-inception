@@ -4,15 +4,15 @@ services:
 #   build: 
 #    context: ./requirements/nginx
 #    args:
-#     BUILD_DATE: Wed May 25 20:05:03 +01 2022
-#   image: nginx
+#     BUILD_DATE: May 26 12:57
+#   image: nginx:${TAG}
 #   container_name: nginx
 #   ports:
 #    - "443:443"
 #   env_file:
 #    - .env
  wordpress:
-  image: wordpress
+  image: wordpress:${TAG}
   container_name: wp
   # depends_on:
   #  - mariadb

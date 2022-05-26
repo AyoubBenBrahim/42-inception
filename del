@@ -32,6 +32,10 @@ COPY ./tools/entry.sh .
 COPY ./conf/wp-config.php ./www/wordpress/wp-config.php
 RUN chmod +x entry.sh
 
+ENTRYPOINT sh entry.sh
+
+
+
 = entry.sh =
 #!/bin/sh
 sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/' /etc/php7/php-fpm.d/www.conf

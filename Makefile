@@ -20,7 +20,7 @@ build:
 	cd srcs && docker-compose build
 build_up:
 	@sed -i "" "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
-	#@sudo sh -c "echo 127.0.0.1 ${DOMAIN_NAME} >> /etc/hosts"
+#	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
 	@cd srcs && docker-compose up --build
 
 #test:
