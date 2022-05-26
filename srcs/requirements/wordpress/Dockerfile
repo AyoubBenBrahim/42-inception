@@ -42,12 +42,12 @@ RUN apt-get update \
 	&& apt-get upgrade -y \
 	php-cgi php-common php-fpm php-pear php-mbstring \
 	php-zip php-net-socket php-gd php-xml-util \
-	php-gettext php-mysql php-bcmath -y
+	php-gettext php-mysql php-bcmath -y \
+	&& apt-get autoclean && apt-get autoremove
 
 COPY --from=build-stage /var/ /var/
-# COPY --from=build-stage /etc/nginx /etc/nginx/
-RUN sh /var/www/html/scripts/update_php_ini.sh
-
+RUN sh /var/www/html/scripts/update_php_ini.sh \
+chown -R www-data:www-data /var/www/html/
 
 ENTRYPOINT sh /var/www/html/scripts/update_wp-config.sh
 

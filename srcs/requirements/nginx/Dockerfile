@@ -18,11 +18,12 @@ RUN ln -s /etc/nginx/sites-available/inception.conf /etc/nginx/sites-enabled/inc
 
 FROM debian:buster AS final-stage
 
-LABEL version="1.0"
-LABEL description="this is an Nginx Image"
-LABEL maintainer="ayoubbrs@gmail.com"
 ARG BUILD_DATE
-LABEL build-date=${BUILD_DATE}
+
+LABEL version="1.0" \
+ description="This Is a Nginx Image" \
+ maintainer="ayoubbrs@gmail.com" \
+ build-date=${BUILD_DATE}
 
 RUN apt-get update \
 	&& apt-get upgrade -y \

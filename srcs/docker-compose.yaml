@@ -4,7 +4,7 @@ services:
 #   build: 
 #    context: ./requirements/nginx
 #    args:
-#     BUILD_DATE: Thu May 26 15:10:20 +01 2022
+#     BUILD_DATE: Thu May 26 18:04:41 +01 2022
 #   image: nginx:${TAG}
 #   container_name: nginx
 #   ports:
@@ -23,7 +23,7 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Thu May 26 15:10:20 +01 2022
+    BUILD_DATE: Thu May 26 18:04:41 +01 2022
 #   ports:
 #    - '9000:9000'
   # volumes:
