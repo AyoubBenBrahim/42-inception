@@ -1,11 +1,34 @@
 version: "3.7"
 services:
-#  
+ nginx:
+  build: 
+   context: ./requirements/nginx
+   args:
+    BUILD_DATE: Sat May 28 20:53:04 +01 2022
+  image: nginx:${TAG}
+  container_name: nginx
+  ports:
+   - "443:443"
+  env_file:
+   - .env
+ mariadb:
+    image: mariadb:${TAG}
+    container_name: maria
+    build:
+     context: ./requirements/mariadb/
+     args:
+      BUILD_DATE: Sat May 28 20:53:04 +01 2022
+    networks:
+      - inception_network
+    volumes:
+      - maria_vol:/var/lib/mysql
+    env_file:
+      - .env
  wordpress:
   image: wordpress:${TAG}
   container_name: wp
-  # depends_on:
-  #  - mariadb
+  depends_on:
+   - mariadb
   networks:
    - inception_network
   env_file:
@@ -13,7 +36,7 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Sat May 28 14:48:21 +01 2022
+    BUILD_DATE: Sat May 28 20:53:04 +01 2022
   ports:
    - '9000:9000'
   volumes:
@@ -30,8 +53,8 @@ volumes:
     type: 'none'
     o: 'bind'
     device: '/Users/aybouras/Desktop/inception_volumes/wordpress'
-#  maria_vol:
-#   driver_opts:
-#     type: 'none'
-#     o: 'bind'
-#     device: '/Users/aybouras/Desktop/inception_volumes/maria'
+ maria_vol:
+  driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: '/Users/aybouras/Desktop/inception_volumes/maria'
