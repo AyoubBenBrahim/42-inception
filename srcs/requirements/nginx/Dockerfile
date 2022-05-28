@@ -3,9 +3,9 @@ FROM debian:buster AS build-stage
 
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install openssl nginx -y \
-    && rm -rf /etc/nginx/sites-available/default \
-    && rm etc/nginx/sites-enabled/default
+    && apt-get install openssl nginx -y 
+    # && rm -rf /etc/nginx/sites-available/default \
+    # && rm etc/nginx/sites-enabled/default
 
 WORKDIR /my_certs
 
@@ -13,7 +13,9 @@ RUN openssl req  -nodes -new -x509 -days 3650 -keyout inception.key -out incepti
 
 COPY ./conf/wordpress.conf /etc/nginx/sites-available/
 
-RUN ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/wordpress.conf
+RUN ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/wordpress.conf \
+    && unlink /etc/nginx/sites-enabled/default \
+    && cp -p /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-available/wordpress.conf.bak
 
 
 FROM debian:buster AS final-stage

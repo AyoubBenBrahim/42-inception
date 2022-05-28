@@ -1,31 +1,37 @@
 version: "3.7"
 services:
- nginx:
-  build: 
-   context: ./requirements/nginx
-   args:
-    BUILD_DATE: Fri May 27 19:07:35 +01 2022
-  image: nginx:${TAG}
-  container_name: nginx
-  ports:
-   - "443:443"
-  env_file:
-   - .env
+#  
  wordpress:
   image: wordpress:${TAG}
   container_name: wp
   # depends_on:
   #  - mariadb
-  # networks:
-  #  - inception_network
+  networks:
+   - inception_network
   env_file:
    - .env
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Fri May 27 19:07:35 +01 2022
-#   ports:
-#    - '9000:9000'
-  # volumes:
-  #  - wordpress_vol:/var/www/html
+    BUILD_DATE: Sat May 28 14:48:21 +01 2022
+  ports:
+   - '9000:9000'
+  volumes:
+   - wordpress_vol:/var/www/html/wordpress
   restart: always
+
+networks:
+  inception_network:
+    driver: bridge
+
+volumes:
+ wordpress_vol:
+  driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: '/Users/aybouras/Desktop/inception_volumes/wordpress'
+#  maria_vol:
+#   driver_opts:
+#     type: 'none'
+#     o: 'bind'
+#     device: '/Users/aybouras/Desktop/inception_volumes/maria'
