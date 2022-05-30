@@ -7,5 +7,3 @@ sed -i "s/password_here/$DB_PASSWORD/g" /var/www/html/wordpress/wp-config.php
 # echo ${DB_USER} >> FILE
 # echo ${DB_PASSWORD} >> FILE
 
-# sleep 600
-
