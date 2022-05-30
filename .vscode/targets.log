@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sat May 28 19:31:08 2022
+# Make data base, printed on Mon May 30 09:00:50 2022
 
 # Variables
 
@@ -39,17 +39,17 @@ MAKEFILE_LIST :=  Makefile srcs/.env
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/vscode-ipc-53e90073-c729-45b1-8eee-c49384aadc2a.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/vscode-ipc-94f73e4a-f337-4984-95cb-37682a1d61d7.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.kRWm3pBONT/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.OJvVWIwqNB/Render
 # environment
 PATH = /Users/aybouras/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `srcs/.env', line 2)
-DOMAIN_NAME = inception.com
+DOMAIN_NAME = aybouras.42.ma
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -59,9 +59,11 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `srcs/.env', line 1)
 TAG = v1.0
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.zsXTakRV9u/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.LuJUN8ocqn/Listeners
 # automatic
 %F = $(notdir $%)
+# makefile (from `srcs/.env', line 10)
+MYSQL_ROOT_PASSWORD = root1337@
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -86,6 +88,8 @@ ZSH = /Users/aybouras/.oh-my-zsh
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
+# makefile (from `srcs/.env', line 9)
+MYSQL_ROOT_USER = root
 # environment
 XPC_FLAGS = 0x0
 # default
@@ -114,8 +118,8 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /Users/aybouras/Library/Application Support/Code/1.67.0-main.sock
-# makefile (from `srcs/.env', line 5)
-DB_PASSWORD = Ayoub1337@*@
+# makefile (from `srcs/.env', line 6)
+DB_PASSWORD = Ayoub1337@
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -125,7 +129,7 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/aybouras/.nvm
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -140,17 +144,17 @@ MAKEFILES :=
 HOMEBREW_NO_AUTO_UPDATE = 1
 # automatic
 <F = $(notdir $<)
-# makefile (from `srcs/.env', line 4)
+# makefile (from `srcs/.env', line 5)
 DB_USER = ayoub
 # environment
 PAGER = less
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a8
+SECURITYSESSIONID = 186a7
 # automatic
 ^F = $(notdir $^)
-# makefile (from `srcs/.env', line 3)
+# makefile (from `srcs/.env', line 4)
 DB_NAME = inception_db
 # default
 SUFFIXES := 
@@ -161,9 +165,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2217
+VSCODE_PID = 50960
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=1/100=1%
+# Load=76/1024=7%, Rehash=0, Collisions=1/102=1%
 
 # Pattern-specific Variable Values
 
@@ -250,7 +254,7 @@ detach:
 # Not a target:
 srcs/.env:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 20:03:26
+#  Last modified 2022-05-29 13:07:45
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -270,7 +274,6 @@ run:
 	cd srcs && docker-compose up
 	
 
- 
 down:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -292,6 +295,6 @@ down:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4077 / max = 4077 / min = 4077 / avg = 4077
 
-# Finished Make data base on Sat May 28 19:31:08 2022
+# Finished Make data base on Mon May 30 09:00:50 2022
 
  

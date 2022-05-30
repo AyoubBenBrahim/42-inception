@@ -18,8 +18,8 @@ RUN chmod 777 ./launch_db.sh
 EXPOSE 3306
 
 
-
-ENTRYPOINT ["sleep", "600"]
+# ENTRYPOINT sh ./launch_db.sh && sleep 700
+ENTRYPOINT ["sleep", "700"]
    
    
 
