@@ -51,7 +51,7 @@ RUN chown -R www-data:www-data /var/www/html/wordpress
 # RUN chmod +x /var/www/html/scripts//*.sh
 EXPOSE 9000
 
-ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && sleep 600
+ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && sleep 800
 # ENTRYPOINT sh /var/www/html/scripts/update_wp-config.sh && sleep 600
 
 # ENTRYPOINT ["sleep", "600"]

@@ -4,13 +4,17 @@ services:
   build: 
    context: ./requirements/nginx
    args:
-    BUILD_DATE: Mon May 30 20:29:51 +01 2022
+    BUILD_DATE: Tue May 31 15:52:42 +01 2022
   image: nginx:${TAG}
   container_name: nginx
   ports:
    - "443:443"
   env_file:
    - .env
+  volumes:
+   - wordpress_vol:/var/www/html/wordpress
+  networks:
+    - inception_network
   restart: always
  mariadb:
     image: mariadb:${TAG}
@@ -18,7 +22,7 @@ services:
     build:
      context: ./requirements/mariadb/
      args:
-      BUILD_DATE: Mon May 30 20:29:51 +01 2022
+      BUILD_DATE: Tue May 31 15:52:42 +01 2022
     networks:
       - inception_network
     ports:
@@ -30,9 +34,9 @@ services:
     restart: always
  wordpress:
   image: wordpress:${TAG}
-  container_name: wp
-  # depends_on:
-  #  - mariadb
+  container_name: wordpress
+  depends_on:
+   - mariadb
   networks:
    - inception_network
   env_file:
@@ -40,9 +44,9 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Mon May 30 20:29:51 +01 2022
-  ports:
-   - '9000:9000'
+    BUILD_DATE: Tue May 31 15:52:42 +01 2022
+  expose:
+   - 9000
   volumes:
    - wordpress_vol:/var/www/html/wordpress
   restart: always

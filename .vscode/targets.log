@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Mon May 30 09:00:50 2022
+# Make data base, printed on Tue May 31 08:05:42 2022
 
 # Variables
 
@@ -39,16 +36,16 @@ MAKEFILE_LIST :=  Makefile srcs/.env
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/vscode-ipc-94f73e4a-f337-4984-95cb-37682a1d61d7.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/vscode-ipc-86354d47-a44c-4a76-be96-79c8b4321c33.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.OJvVWIwqNB/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.yDwU2lz8GG/Render
 # environment
 PATH = /Users/aybouras/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# makefile (from `srcs/.env', line 2)
+# makefile (from `srcs/.env', line 3)
 DOMAIN_NAME = aybouras.42.ma
 # environment
 VSCODE_LOG_STACK = false
@@ -59,11 +56,11 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `srcs/.env', line 1)
 TAG = v1.0
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.LuJUN8ocqn/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7ElrDqNyo2/Listeners
 # automatic
 %F = $(notdir $%)
 # makefile (from `srcs/.env', line 10)
-MYSQL_ROOT_PASSWORD = root1337@
+MYSQL_ROOT_PASSWORD = root1337
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -75,7 +72,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /Users/aybouras
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/aybouras/Library/Application Support/Code/CachedData/57fd6d0195bb9b9d1b49f6da5db789060795de47
 # environment
@@ -109,7 +106,7 @@ LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
@@ -118,8 +115,8 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /Users/aybouras/Library/Application Support/Code/1.67.0-main.sock
-# makefile (from `srcs/.env', line 6)
-DB_PASSWORD = Ayoub1337@
+# makefile (from `srcs/.env', line 7)
+DB_PASSWORD = ayoub1337
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -144,17 +141,17 @@ MAKEFILES :=
 HOMEBREW_NO_AUTO_UPDATE = 1
 # automatic
 <F = $(notdir $<)
-# makefile (from `srcs/.env', line 5)
+# makefile (from `srcs/.env', line 6)
 DB_USER = ayoub
 # environment
 PAGER = less
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a7
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
-# makefile (from `srcs/.env', line 4)
+# makefile (from `srcs/.env', line 5)
 DB_NAME = inception_db
 # default
 SUFFIXES := 
@@ -165,7 +162,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 50960
+VSCODE_PID = 23554
 # variable set hash-table stats:
 # Load=76/1024=7%, Rehash=0, Collisions=1/102=1%
 
@@ -175,9 +172,9 @@ VSCODE_PID = 50960
 
 # Directories
 
-# . (device 16777227, inode 714979): 8 files, no impossibilities.
+# . (device 16777227, inode 714979): 7 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 7 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -254,7 +251,7 @@ detach:
 # Not a target:
 srcs/.env:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-29 13:07:45
+#  Last modified 2022-05-30 12:16:22
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -295,6 +292,8 @@ down:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4077 / max = 4077 / min = 4077 / avg = 4077
 
-# Finished Make data base on Mon May 30 09:00:50 2022
+# Finished Make data base on Tue May 31 08:05:42 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+

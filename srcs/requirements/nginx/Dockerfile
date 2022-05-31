@@ -11,11 +11,12 @@ WORKDIR /my_certs
 
 RUN openssl req  -nodes -new -x509 -days 3650 -keyout inception.key -out inception.crt -subj "/C=MA/ST=KH/L=khouribga/O=1337/OU=Org/CN=www.1337.ma"
 
-COPY ./conf/wordpress.conf /etc/nginx/sites-available/
+# COPY ./conf/wordpress.conf /etc/nginx/sites-available/
+COPY ./conf/default /etc/nginx/sites-available/
 
-RUN ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/wordpress.conf \
-    && unlink /etc/nginx/sites-enabled/default \
-    && cp -p /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-available/wordpress.conf.bak
+# RUN ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/wordpress.conf \
+#     && unlink /etc/nginx/sites-enabled/default \
+#     && cp -p /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-available/wordpress.conf.bak
 
 
 FROM debian:buster AS final-stage
@@ -37,4 +38,6 @@ COPY --from=build-stage /etc/nginx /etc/nginx/
 
 EXPOSE 443
 
-ENTRYPOINT ["sleep", "600"]
+# RUN service nginx restart
+
+ENTRYPOINT ["sleep", "800"]
