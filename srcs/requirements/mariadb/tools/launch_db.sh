@@ -26,7 +26,9 @@ echo "--------------------------------"
 #bind-address            = 127.0.0.1
 sed -i 's/127.0.0.1/0.0.0.0/' etc/mysql/mariadb.conf.d/50-server.cnf
 
-/etc/init.d/mysql restart
+kill `cat /var/run/mysqld/mysqld.pid`
+
+# /etc/init.d/mysql restart
 
 
 
