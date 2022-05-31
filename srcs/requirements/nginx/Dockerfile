@@ -40,4 +40,4 @@ EXPOSE 443
 
 # RUN service nginx restart
 
-ENTRYPOINT ["sleep", "800"]
+ENTRYPOINT service nginx restart && sleep 800

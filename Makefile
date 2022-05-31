@@ -21,6 +21,8 @@ build:
 build_up:
 	@sed -i "" "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
+	rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
+	rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
 	@cd srcs && docker-compose up --build
 
 #test:

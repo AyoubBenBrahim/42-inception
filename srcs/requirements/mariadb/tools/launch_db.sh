@@ -13,11 +13,11 @@ echo "FLUSH PRIVILEGES" | mysql -u root
 
 echo "--------------------------------"
 
-echo "CREATE DATABASE wordpress;" | mysql -u root
+echo "CREATE DATABASE $DB_NAME;" | mysql -u root
 
 echo "--------------------------------"
 
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" | mysql -h 127.0.0.1 -u root
+echo "ALTER USER 'root'@localhost IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" | mysql -u root
 echo "FLUSH PRIVILEGES;" | mysql -u root
 
 

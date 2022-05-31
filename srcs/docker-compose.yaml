@@ -4,7 +4,7 @@ services:
   build: 
    context: ./requirements/nginx
    args:
-    BUILD_DATE: Tue May 31 15:52:42 +01 2022
+    BUILD_DATE: Tue May 31 19:53:42 +01 2022
   image: nginx:${TAG}
   container_name: nginx
   ports:
@@ -18,11 +18,11 @@ services:
   restart: always
  mariadb:
     image: mariadb:${TAG}
-    container_name: maria
+    container_name: mariadb
     build:
      context: ./requirements/mariadb/
      args:
-      BUILD_DATE: Tue May 31 15:52:42 +01 2022
+      BUILD_DATE: Tue May 31 19:53:42 +01 2022
     networks:
       - inception_network
     ports:
@@ -44,7 +44,7 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Tue May 31 15:52:42 +01 2022
+    BUILD_DATE: Tue May 31 19:53:42 +01 2022
   expose:
    - 9000
   volumes:
@@ -60,9 +60,9 @@ volumes:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception_volumes/wordpress'
+    device: '/Users/aybouras/Desktop/inception_git/wordpress_vol'
  maria_vol:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception_volumes/maria'
+    device: '/Users/aybouras/Desktop/inception_git/maria_vol'
