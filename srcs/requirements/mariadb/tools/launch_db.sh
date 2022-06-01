@@ -30,8 +30,4 @@ kill `cat /var/run/mysqld/mysqld.pid`
 
 # /etc/init.d/mysql restart
 
-
-
-# SET PASSWORD FOR 'root'@localhost = PASSWORD("root");
-
-# SELECT user, password  FROM mysql.user WHERE User = 'root';
+# exec php-fpm7.3 --nodaemonize

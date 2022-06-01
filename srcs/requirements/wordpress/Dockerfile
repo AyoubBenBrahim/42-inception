@@ -48,14 +48,15 @@ COPY --from=build-stage /var/ /var/
 # chown -R www-data:www-data /var/www/html/wordpress
 
 RUN chown -R www-data:www-data /var/www/html/wordpress
+
 # RUN chmod +x /var/www/html/scripts//*.sh
 EXPOSE 9000
-RUN sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+
+# RUN sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+
 # RUN sh /var/www/html/scripts/launch_scripts.sh
 
 ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && sleep 800
-
-
 
 
 
