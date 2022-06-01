@@ -18,11 +18,5 @@ RUN chmod 777 ./launch_db.sh
 EXPOSE 3306
 
 
+# ENTRYPOINT sh ./launch_db.sh
 ENTRYPOINT sh ./launch_db.sh && mysqld_safe
-# ENTRYPOINT ["sleep", "700"]
-   
-   
-
-
-
-

@@ -41,7 +41,7 @@ LABEL version="1.0" \
 
 RUN apt-get update \
 	&& apt-get upgrade -y \
-	php-fpm php-mysql
+	php-fpm php-mysql curl
 
 COPY --from=build-stage /var/ /var/
 # RUN sh /var/www/html/scripts/update_php_ini.sh \
@@ -56,6 +56,14 @@ EXPOSE 9000
 
 # RUN sh /var/www/html/scripts/launch_scripts.sh
 
+WORKDIR  /var/www/html/wordpress
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
+RUN chmod +x /var/www/html/wordpress/wp-cli.phar
+RUN mv /var/www/html/wordpress/wp-cli.phar /usr/local/bin/wp
+
+WORKDIR  /
+
+# ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh
 ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && sleep 800
 
 

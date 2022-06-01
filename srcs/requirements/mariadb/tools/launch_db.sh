@@ -30,4 +30,8 @@ kill `cat /var/run/mysqld/mysqld.pid`
 
 # /etc/init.d/mysql restart
 
+
 # exec php-fpm7.3 --nodaemonize
+
+# service mysql restart
+# exec mysqld_safe
