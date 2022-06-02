@@ -4,7 +4,7 @@ services:
   build: 
    context: ./requirements/nginx
    args:
-    BUILD_DATE: Thu Jun  2 15:07:05 +01 2022
+    BUILD_DATE: Thu Jun  2 15:22:16 +01 2022
   image: nginx:${TAG}
   container_name: nginx
   ports:
@@ -22,7 +22,7 @@ services:
     build:
      context: ./requirements/mariadb/
      args:
-      BUILD_DATE: Thu Jun  2 15:07:05 +01 2022
+      BUILD_DATE: Thu Jun  2 15:22:16 +01 2022
     networks:
       - inception_network
     ports:
@@ -44,7 +44,7 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Thu Jun  2 15:07:05 +01 2022
+    BUILD_DATE: Thu Jun  2 15:22:16 +01 2022
   expose:
    - 9000
   volumes:

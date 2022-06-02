@@ -41,7 +41,9 @@ LABEL version="1.0" \
 
 RUN apt-get update \
 	&& apt-get upgrade -y \
-	php-fpm php-mysql curl
+	php-cgi php-common php-fpm php-pear php-mbstring \
+    php-zip php-net-socket php-gd php-xml-util \
+    php-gettext php-mysql php-bcmath unzip wget curl git vim
 
 COPY --from=build-stage /var/ /var/
 
@@ -72,8 +74,8 @@ RUN mv /var/www/html/wordpress/wp-cli.phar /usr/local/bin/wp
 
 WORKDIR  /
 
-ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && sleep 800
-# ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh
+# ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && sleep 800
+ENTRYPOINT sh /var/www/html/scripts/launch_scripts.sh && /usr/sbin/php-fpm7.3 --nodaemonize --allow-to-run-as-root
 
 
 

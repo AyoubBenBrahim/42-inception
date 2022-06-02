@@ -10,6 +10,5 @@ sh /var/www/html/scripts/wp-cli.sh
 
 service php7.3-fpm start # works with sleep
 
-# exec php-fpm7.3 --nodaemonize
 
 # /usr/sbin/php-fpm7.3 --nodaemonize --allow-to-run-as-root
