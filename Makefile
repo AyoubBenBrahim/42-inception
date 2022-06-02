@@ -1,8 +1,8 @@
 include srcs/.env
 
-up: build
-	sudo sh -c "echo 127.0.0.1 ${DOMAIN_NAME} >> /etc/hosts"
-	cd srcs && docker-compose up
+# up: build
+# 	sudo sh -c "echo 127.0.0.1 ${DOMAIN_NAME} >> /etc/hosts"
+# 	cd srcs && docker-compose up
 
 run:
 	cd srcs && docker-compose up
@@ -21,8 +21,11 @@ build:
 build_up:
 	@sed -i "" "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
-	rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
-	rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
+# @mkdir /Users/aybouras/Desktop/inception_git/wordpress_vol
+# @mkdir /Users/aybouras/Desktop/inception_git/maria_vol
+
+	/bin/rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
+	/bin/rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
 	@cd srcs && docker-compose up --build
 
 #test:

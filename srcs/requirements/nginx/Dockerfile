@@ -38,7 +38,6 @@ COPY --from=build-stage /etc/nginx /etc/nginx/
 
 EXPOSE 443
 
-# RUN service nginx restart
-
 # ENTRYPOINT service nginx restart && sleep 800
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT nginx -g "daemon off;"

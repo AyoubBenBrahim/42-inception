@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Wed Jun  1 08:09:35 2022
+# Make data base, printed on Thu Jun  2 13:04:32 2022
 
 # Variables
 
@@ -20,6 +17,8 @@ make: *** No rule to make target `all'.  Stop.
 ?F = $(notdir $?)
 # makefile (from `srcs/.env', line 8)
 DB_HOST = mariadb
+# makefile (from `srcs/.env', line 19)
+WP_USER_PASSWORD = ayoub1337
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -41,11 +40,11 @@ MAKEFILE_LIST :=  Makefile srcs/.env
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/vscode-ipc-62b8b073-b2e2-43c7-8c25-e394cb4e5093.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n00006sm0001pd/T/vscode-ipc-2cb94a2a-c4ab-49b9-ab8f-1a0dfd8c0a9a.sock
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.pvGTlAUh0E/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.aKnC2QRbT0/Render
 # environment
 PATH = /Users/aybouras/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -60,8 +59,10 @@ ELECTRON_RUN_AS_NODE = 1
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # makefile (from `srcs/.env', line 1)
 TAG = v1.0
+# makefile (from `srcs/.env', line 15)
+WP_ADMIN_USER = boss
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.OCbxtxI6pt/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.UhQVqs0Byq/Listeners
 # automatic
 %F = $(notdir $%)
 # makefile (from `srcs/.env', line 11)
@@ -110,6 +111,8 @@ USER = aybouras
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# makefile (from `srcs/.env', line 18)
+WP_USER = ayoub
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
@@ -124,6 +127,8 @@ VSCODE_IPC_HOOK = /Users/aybouras/Library/Application Support/Code/1.67.0-main.s
 DB_PASSWORD = ayoub1337
 # makefile
 MAKEFLAGS = Rrqp
+# makefile (from `srcs/.env', line 16)
+WP_ADMIN_USER_PASSWORD = boss1337
 # environment
 MFLAGS = -Rrqp
 # automatic
@@ -131,7 +136,7 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/aybouras/.nvm
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000006.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -167,9 +172,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 8089
+VSCODE_PID = 1067
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=1/103=1%
+# Load=81/1024=8%, Rehash=0, Collisions=1/107=1%
 
 # Pattern-specific Variable Values
 
@@ -258,7 +263,7 @@ detach:
 # Not a target:
 srcs/.env:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-31 20:28:14
+#  Last modified 2022-06-01 20:15:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -299,6 +304,8 @@ down:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4077 / max = 4077 / min = 4077 / avg = 4077
 
-# Finished Make data base on Wed Jun  1 08:09:35 2022
+# Finished Make data base on Thu Jun  2 13:04:32 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+
