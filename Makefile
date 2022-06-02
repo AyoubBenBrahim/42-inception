@@ -24,12 +24,12 @@ build_up:
 # @mkdir /Users/aybouras/Desktop/inception_git/wordpress_vol
 # @mkdir /Users/aybouras/Desktop/inception_git/maria_vol
 
-	/bin/rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
-	/bin/rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
+#	/bin/rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
+#	/bin/rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
 	@cd srcs && docker-compose up --build
 
 #test:
-#	@echo $(shell date)
+#	@[ -d /srcs ] && echo "This directory exists!"
 
 # kill:
 # 	docker kill $(docker ps -q)

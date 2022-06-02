@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # service mysql start
-/etc/init.d/mysql start
+service mysql start
 
 echo "--------------------------------"
 # The wildcard as host implies that the user can connect from any client host
@@ -24,14 +24,9 @@ echo "FLUSH PRIVILEGES;" | mysql -u root
 echo "--------------------------------"
 
 #bind-address            = 127.0.0.1
-sed -i 's/127.0.0.1/0.0.0.0/' etc/mysql/mariadb.conf.d/50-server.cnf
 
 kill `cat /var/run/mysqld/mysqld.pid`
 
-# /etc/init.d/mysql restart
+mysqld_safe
 
-
-# exec php-fpm7.3 --nodaemonize
-
-# service mysql restart
-# exec mysqld_safe
+# tail -f /dev/null

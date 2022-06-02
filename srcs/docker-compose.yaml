@@ -1,28 +1,12 @@
 version: "3.7"
 services:
- nginx:
-  build: 
-   context: ./requirements/nginx
-   args:
-    BUILD_DATE: Thu Jun  2 15:22:16 +01 2022
-  image: nginx:${TAG}
-  container_name: nginx
-  ports:
-   - "443:443"
-  env_file:
-   - .env
-  volumes:
-   - wordpress_vol:/var/www/html/wordpress
-  networks:
-    - inception_network
-  restart: always
  mariadb:
     image: mariadb:${TAG}
     container_name: mariadb
     build:
      context: ./requirements/mariadb/
      args:
-      BUILD_DATE: Thu Jun  2 15:22:16 +01 2022
+      BUILD_DATE: Thu Jun  2 19:54:11 +01 2022
     networks:
       - inception_network
     ports:
@@ -44,11 +28,28 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Thu Jun  2 15:22:16 +01 2022
+    BUILD_DATE: Thu Jun  2 19:54:11 +01 2022
   expose:
    - 9000
   volumes:
    - wordpress_vol:/var/www/html/wordpress
+  restart: always
+  
+ nginx:
+  build: 
+   context: ./requirements/nginx
+   args:
+    BUILD_DATE: Thu Jun  2 19:54:11 +01 2022
+  image: nginx:${TAG}
+  container_name: nginx
+  ports:
+   - "443:443"
+  env_file:
+   - .env
+  volumes:
+   - wordpress_vol:/var/www/html/wordpress
+  networks:
+    - inception_network
   restart: always
 
 networks:

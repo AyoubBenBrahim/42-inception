@@ -1,11 +1,8 @@
-#FROM alpine:3.15.4 AS build-stage
 FROM debian:buster AS build-stage
 
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install openssl nginx -y 
-    # && rm -rf /etc/nginx/sites-available/default \
-    # && rm etc/nginx/sites-enabled/default
 
 WORKDIR /my_certs
 
@@ -24,20 +21,19 @@ FROM debian:buster AS final-stage
 ARG BUILD_DATE
 
 LABEL version="1.0" \
- description="This Is a Nginx Image" \
- maintainer="ayoubbrs@gmail.com" \
- build-date=${BUILD_DATE}
+    description="This Is a Nginx Image" \
+    maintainer="ayoubbrs@gmail.com" \
+    build-date=${BUILD_DATE}
 
 RUN apt-get update \
-	&& apt-get upgrade -y \
-	&& apt-get install nginx -y \
-	&& rm -rf /etc/nginx
+    && apt-get upgrade -y \
+    && apt-get install nginx -y \
+    && rm -rf /etc/nginx
 
 COPY --from=build-stage /my_certs/* /etc/ssl/
 COPY --from=build-stage /etc/nginx /etc/nginx/
 
 EXPOSE 443
 
-# ENTRYPOINT service nginx restart && sleep 800
-# ENTRYPOINT ["nginx", "-g", "daemon off;"]
-ENTRYPOINT nginx -g "daemon off;"
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
