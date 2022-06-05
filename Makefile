@@ -24,8 +24,10 @@ build_up:
 # @mkdir /Users/aybouras/Desktop/inception_git/wordpress_vol
 # @mkdir /Users/aybouras/Desktop/inception_git/maria_vol
 
-#	/bin/rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
-#	/bin/rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
+	@/bin/rm -rf /Users/aybouras/Desktop/inception_git/wordpress_vol/*
+	@/bin/rm -rf /Users/aybouras/Desktop/inception_git/maria_vol/*
+	@/bin/rm -rf /Users/aybouras/Desktop/inception_git/adminer_vol/*
+
 	@cd srcs && docker-compose up --build
 
 #test:

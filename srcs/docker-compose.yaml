@@ -1,12 +1,31 @@
 version: "3.7"
 services:
+ nginx:
+  build: 
+   context: ./requirements/nginx
+   args:
+    BUILD_DATE: Sun Jun  5 21:02:57 +01 2022
+  image: nginx:${TAG}
+  container_name: nginx
+  ports:
+   - "443:443"
+   - "8080:8080"
+  env_file:
+   - .env
+  volumes:
+   - wordpress_vol:/var/www/wordpress
+   - adminer_vol:/var/www/adminer
+  networks:
+    - inception_network
+  restart: always
+
  mariadb:
     image: mariadb:${TAG}
     container_name: mariadb
     build:
      context: ./requirements/mariadb/
      args:
-      BUILD_DATE: Thu Jun  2 19:54:11 +01 2022
+      BUILD_DATE: Sun Jun  5 21:02:57 +01 2022
     networks:
       - inception_network
     ports:
@@ -16,11 +35,13 @@ services:
     env_file:
       - .env
     restart: always
+
  wordpress:
   image: wordpress:${TAG}
   container_name: wordpress
   depends_on:
    - mariadb
+   - nginx
   networks:
    - inception_network
   env_file:
@@ -28,30 +49,55 @@ services:
   build:
    context: ./requirements/wordpress
    args:
-    BUILD_DATE: Thu Jun  2 19:54:11 +01 2022
+    BUILD_DATE: Sun Jun  5 21:02:57 +01 2022
   expose:
    - 9000
   volumes:
-   - wordpress_vol:/var/www/html/wordpress
+   - wordpress_vol:/var/www/wordpress
   restart: always
-  
- nginx:
-  build: 
-   context: ./requirements/nginx
-   args:
-    BUILD_DATE: Thu Jun  2 19:54:11 +01 2022
-  image: nginx:${TAG}
-  container_name: nginx
-  ports:
-   - "443:443"
-  env_file:
-   - .env
-  volumes:
-   - wordpress_vol:/var/www/html/wordpress
+
+#  redis:
+#   build: ./requirements/bonus/redis
+    # image: redis:${TAG}
+    # container_name: redis
+#   networks:
+#     - inception_network
+#   restart: always
+
+#  ftp:
+#   image: ftp
+#   env_file: .env
+#   build:
+#       context: ./requirements/bonus/ftp
+#   depends_on:
+#      - wordpress
+#   container_name: ftp
+#   ports:
+#       - '21:21'
+#       - '20:20'
+#   volumes:
+#       - wordpress_vol:/Users/aybouras/Desktop/inception_git/
+#   networks:
+#       - inception_network
+#   restart: always 
+ 
+ adminer:
+  build: ./requirements/bonus/adminer
+  image: adminer:${TAG}
+  container_name: adminer
+  expose:
+    - 7000
   networks:
     - inception_network
   restart: always
+  depends_on:
+  # - wordpress
+  - nginx
+  volumes:
+  #  - wordpress_vol:/var/www/
+   - adminer_vol:/var/www/adminer
 
+  
 networks:
   inception_network:
     driver: bridge
@@ -67,3 +113,8 @@ volumes:
     type: 'none'
     o: 'bind'
     device: '/Users/aybouras/Desktop/inception_git/maria_vol'
+ adminer_vol:
+  driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: '/Users/aybouras/Desktop/inception_git/adminer_vol'

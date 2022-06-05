@@ -12,7 +12,7 @@ docker network rm $(docker network ls -q)
 # del image with name 
  # docker image rm -f nginx_test:1.1
 
-# rm -rf ./wordpress_vol/*
-# rm -rf ./maria_vol/* 
+/bin/rm -rf ./wordpress_vol/*
+/bin/rm -rf ./maria_vol/* 
 
 
