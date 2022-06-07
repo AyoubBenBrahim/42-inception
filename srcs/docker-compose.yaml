@@ -107,14 +107,14 @@ volumes:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception_git/wordpress_vol'
+    device: '/Users/aybouras/Desktop/inception/wordpress_vol'
  maria_vol:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception_git/maria_vol'
+    device: '/Users/aybouras/Desktop/inception/maria_vol'
  adminer_vol:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception_git/adminer_vol'
+    device: '/Users/aybouras/Desktop/inception/adminer_vol'
