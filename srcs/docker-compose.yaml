@@ -60,9 +60,13 @@ services:
   build: ./requirements/bonus/redis
   image: redis:${TAG}
   container_name: redis
+  depends_on:
+   - wordpress
   networks:
     - inception_network
   restart: always
+  volumes:
+   - wordpress_vol:/var/www/wordpress
 
 #  ftp:
 #   image: ftp

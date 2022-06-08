@@ -43,6 +43,10 @@ RUN cp -r /wordpress/* /var/www/wordpress
 RUN chown -R www-data:www-data /var/www/wordpress
 # WORKDIR  /var/www/wordpress
 
+RUN wget http://download.redis.io/redis-stable.tar.gz \
+	&& tar xvzf redis-stable.tar.gz && rm -rf redis-stable.tar.gz
+RUN mv redis-stable /var/www/wordpress/wp-content/plugins/
+
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
 RUN chmod +x ./wp-cli.phar
 RUN mv ./wp-cli.phar /usr/local/bin/wp
