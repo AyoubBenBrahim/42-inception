@@ -29,7 +29,8 @@ RUN apt-get update \
 	&& apt-get upgrade -y \
 	php-cgi php-common php-fpm php-pear php-mbstring \
 	php-zip php-net-socket php-gd php-xml-util \
-	php-gettext php-mysql php-bcmath vim curl unzip wget git -y 
+	php-gettext php-mysql php-bcmath  vim curl unzip wget git -y \
+	mariadb-client
 
 # COPY --from=build-stage /var/ /var/
 
