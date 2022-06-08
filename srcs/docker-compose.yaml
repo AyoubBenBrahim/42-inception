@@ -64,8 +64,8 @@ services:
    - wordpress
   networks:
     - inception_network
-  expose:
-  - 6379
+  ports:
+    - 6379:6379
   restart: always
   volumes:
    - wordpress_vol:/var/www/wordpress

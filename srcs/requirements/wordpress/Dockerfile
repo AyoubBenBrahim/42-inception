@@ -30,7 +30,7 @@ RUN apt-get update \
 	php-cgi php-common php-fpm php-pear php-mbstring \
 	php-zip php-net-socket php-gd php-xml-util \
 	php-gettext php-mysql php-bcmath  vim curl unzip wget git -y \
-	mariadb-client
+	mariadb-client -y
 
 # COPY --from=build-stage /var/ /var/
 
