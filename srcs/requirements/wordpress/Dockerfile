@@ -42,11 +42,10 @@ RUN wget http://wordpress.org/latest.tar.gz \
 RUN mkdir -p /var/www/wordpress
 RUN cp -r /wordpress/* /var/www/wordpress
 RUN chown -R www-data:www-data /var/www/wordpress
-# WORKDIR  /var/www/wordpress
 
-RUN wget http://download.redis.io/redis-stable.tar.gz \
-	&& tar xvzf redis-stable.tar.gz && rm -rf redis-stable.tar.gz
-RUN mv redis-stable /var/www/wordpress/wp-content/plugins/
+# RUN wget http://download.redis.io/redis-stable.tar.gz \
+# 	&& tar xvzf redis-stable.tar.gz && rm -rf redis-stable.tar.gz
+# RUN mv redis-stable /var/www/wordpress/wp-content/plugins/
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
 RUN chmod +x ./wp-cli.phar
@@ -55,8 +54,6 @@ RUN mv ./wp-cli.phar /usr/local/bin/wp
 # RUN mkdir scripts
 COPY ./tools/*.sh /
 RUN chmod +x /*.sh
-# RUN mkdir -p /var/www/wordpress
-# RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-en.php -O /var/www/wordpress/adminer.php
 
 RUN mkdir /run/php/
 RUN sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
