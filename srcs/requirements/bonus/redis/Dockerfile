@@ -6,9 +6,12 @@ RUN apt-get  update \
 
 
 # WORKDIR /var/www/html
+# RUN wget http://download.redis.io/redis-stable.tar.gz \
+# 	&& tar xvzf redis-stable.tar.gz && rm -rf redis-stable.tar.gz \
+# 	&& apt-get autoclean && apt-get autoremove
+
 RUN wget http://download.redis.io/redis-stable.tar.gz \
-	&& tar xvzf redis-stable.tar.gz && rm -rf redis-stable.tar.gz \
-	&& apt-get autoclean && apt-get autoremove
+	&& tar xvzf redis-stable.tar.gz
 RUN cp -Rf redis-stable /www/wordpress/wp-content/plugins/
 
 ENTRYPOINT redis-server --protected-mode no

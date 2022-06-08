@@ -56,13 +56,13 @@ services:
    - wordpress_vol:/var/www/wordpress
   restart: always
 
-#  redis:
-#   build: ./requirements/bonus/redis
-    # image: redis:${TAG}
-    # container_name: redis
-#   networks:
-#     - inception_network
-#   restart: always
+ redis:
+  build: ./requirements/bonus/redis
+  image: redis:${TAG}
+  container_name: redis
+  networks:
+    - inception_network
+  restart: always
 
 #  ftp:
 #   image: ftp
@@ -94,9 +94,7 @@ services:
   # - wordpress
   - nginx
   volumes:
-  #  - wordpress_vol:/var/www/
    - adminer_vol:/var/www/adminer
-
   
 networks:
   inception_network:
