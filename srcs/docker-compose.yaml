@@ -70,22 +70,22 @@ services:
   volumes:
    - wordpress_vol:/var/www/wordpress
 
-#  ftp:
-#   image: ftp
-#   env_file: .env
-#   build:
-#       context: ./requirements/bonus/ftp
-#   depends_on:
-#      - wordpress
-#   container_name: ftp
-#   ports:
-#       - '21:21'
-#       - '20:20'
-#   volumes:
-#       - wordpress_vol:/Users/aybouras/Desktop/inception_git/
-#   networks:
-#       - inception_network
-#   restart: always 
+ ftp:
+  image: ftp
+  env_file: .env
+  build:
+      context: ./requirements/bonus/ftp
+  depends_on:
+     - wordpress
+  container_name: ftp
+  ports:
+      - '21:21'
+      - '20:20'
+  # volumes:
+  #     - wordpress_vol:/Users/aybouras/Desktop/inception/
+  networks:
+      - inception_network
+  restart: always 
  
  adminer:
   build: ./requirements/bonus/adminer
