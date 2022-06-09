@@ -17,8 +17,7 @@
 
   
 
+/usr/sbin/vsftpd
 
-    \n \
-    userlist_enable=YES \n \
-    userlist_file=/etc/vsftpd.userlist \n \
-    userlist_deny=NO" > /etc/vsftpd.conf 
+# /usr/sbin/vsftpd /etc/vsftpd.conf
+
