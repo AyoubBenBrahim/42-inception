@@ -34,13 +34,12 @@ RUN apt-get update \
 
 # COPY --from=build-stage /var/ /var/
 
-# WORKDIR /var/www/
-RUN wget http://wordpress.org/latest.tar.gz \
-	&& tar -xzvf latest.tar.gz && rm -rf latest.tar.gz \
-	&& cp ./wordpress/wp-config-sample.php ./wordpress/wp-config.php \
-	&& apt-get autoclean && apt-get autoremove
+# RUN wget http://wordpress.org/latest.tar.gz \
+# 	&& tar -xzvf latest.tar.gz && rm -rf latest.tar.gz \
+# 	&& cp ./wordpress/wp-config-sample.php ./wordpress/wp-config.php \
+# 	&& apt-get autoclean && apt-get autoremove
 RUN mkdir -p /var/www/wordpress
-RUN cp -r /wordpress/* /var/www/wordpress
+# RUN cp -r /wordpress/* /var/www/wordpress
 RUN chown -R www-data:www-data /var/www/wordpress
 
 # RUN wget http://download.redis.io/redis-stable.tar.gz \

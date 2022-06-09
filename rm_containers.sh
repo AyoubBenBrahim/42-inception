@@ -1,5 +1,6 @@
 #bin/sh
-docker kill $(docker ps -q)
+
+#docker kill $(docker ps -q)
 
 docker rm $(docker ps -a -q)
 
@@ -14,5 +15,6 @@ docker network rm $(docker network ls -q)
 
 /bin/rm -rf ./wordpress_vol/*
 /bin/rm -rf ./maria_vol/* 
+/bin/rm -rf ./adminer_vol/*
 
 
