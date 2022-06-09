@@ -10,13 +10,6 @@ done
 # sed -i "s/password_here/$DB_PASSWORD/g" /var/www/wordpress/wp-config.php
 # sed -i "s/localhost/$DB_HOST/g" /var/www/wordpress/wp-config.php
 
-# echo " \n // **** Redis Connection Parameters **** \n\n
-# define( 'WP_REDIS_HOST', 'redis'); \n
-# define( 'WP_REDIS_PORT', 6379 ); \n
-# define( 'WP_REDIS_TIMEOUT', 1 ); \n
-# define( 'WP_REDIS_READ_TIMEOUT', 1 ); \n
-# define( 'WP_REDIS_DATABASE', 0 ); \n " >> /var/www/wordpress/wp-config.php
-
 sleep 5
 
 if ! wp core is-installed; then
