@@ -81,7 +81,7 @@ services:
   env_file:
   - .env
   volumes:
-      - ftp_vol:/home/ftp
+      - ftp_vol:/home/aybouras/ftp
   networks:
       - inception_network
   restart: always 
