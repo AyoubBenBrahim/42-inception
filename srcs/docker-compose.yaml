@@ -82,8 +82,8 @@ services:
       - '20:20'
   env_file:
   - .env
-  # volumes:
-  #     - wordpress_vol:/Users/aybouras/Desktop/inception/
+  volumes:
+      - ftp_vol:/home/ftp/files
   networks:
       - inception_network
   restart: always 
@@ -112,14 +112,19 @@ volumes:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception/wordpress_vol'
+    device: '/home/aybouras/data/wordpress_vol'
  maria_vol:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception/maria_vol'
+    device: '/home/aybouras/data/maria_vol'
  adminer_vol:
   driver_opts:
     type: 'none'
     o: 'bind'
-    device: '/Users/aybouras/Desktop/inception/adminer_vol'
+    device: '/home/aybouras/data/adminer_vol'
+  ftp_vol:
+  driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: '/home/aybouras/data/ftp_vol'
