@@ -7,17 +7,18 @@ down:
 # 	cd srcs && docker-compose down -v --rmi all
 
 build_up0:
-	@sed -i "" "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
+#  @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
-	@mkdir /home/aybouras/data/adminer_vol/wordpress_vol
-	@mkdir /home/aybouras/data/adminer_vol/maria_vol
-	@mkdir /home/aybouras/data/adminer_vol/adminer_vol
-	@mkdir /home/aybouras/data/adminer_vol/ftp_vol
+	@mkdir /home/aybouras/data/wordpress_vol
+	@mkdir /home/aybouras/data/maria_vol
+	@mkdir /home/aybouras/data/adminer_vol/
+	@mkdir /home/aybouras/data/ftp_vol
 
 	@cd srcs && docker-compose up --build
 
 build_up1:
-	@sed -i "" "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
+# for mac : sed -i "" "bla/blabla" 
+# @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
 	@cd srcs && docker-compose up --build
 
 kill:
