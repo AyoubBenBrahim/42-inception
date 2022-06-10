@@ -12,10 +12,7 @@
     sed -i "s/ssl-cert-snakeoil.pem/vsftpd.pem/" /etc/vsftpd.conf 
     sed -i "s/ssl_enable=NO/ssl_enable=YES/" /etc/vsftpd.conf 
     echo " pasv_enable=YES" >> /etc/vsftpd.conf 
-  
-   
 
-  
 
 /usr/sbin/vsftpd
 

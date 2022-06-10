@@ -45,8 +45,8 @@ RUN echo "ayoub:ayoub1337" | chpasswd
 EXPOSE 21
 COPY ./tools/launch_ftp.sh /
 
-ENTRYPOINT tail -f /dev/null
-# ENTRYPOINT sh launch_ftp.sh
+# ENTRYPOINT tail -f /dev/null
+ENTRYPOINT sh launch_ftp.sh
 
 # listen=YES
 # listen_ipv6=NO
