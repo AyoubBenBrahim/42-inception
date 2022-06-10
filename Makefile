@@ -30,10 +30,11 @@ rmi:
 rm_volumes:
 	docker volume rm -f $(docker volume ls -q)
 
-clean_all: 
-		cd srcs && docker-compose down
+clean: 
+# cd srcs && docker-compose down
+# docker rmi -f $(docker image ls -q)
+		cd srcs && docker-compose down -v --rmi all
 		docker volume rm -f $(docker volume ls -q)
-		docker rmi -f $(docker image ls -q)
 		@rm -rf /home/aybouras/data/adminer_vol/wordpress_vol
 		@rm -rf /home/aybouras/data/adminer_vol/maria_vol
 		@rm -rf /home/aybouras/data/adminer_vol/adminer_vol

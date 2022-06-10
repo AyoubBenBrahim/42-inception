@@ -1,5 +1,14 @@
 #!/bin/sh
 
+
+useradd $FTP_USER 
+echo "$FTP_USER:$FTP_PWD" |  /usr/sbin/chpasswd
+mkdir -p /home/ftp
+chmod 777 /home/ftp
+chown $FTP_USER:$FTP_USER /home/ftp/
+echo "$FTP_USER" >> /etc/vsftpd.userlist
+
+
     sed -i "s/listen=NO/listen=YES/" /etc/vsftpd.conf 
     sed -i "s/listen_ipv6=YES/listen_ipv6=NO/" /etc/vsftpd.conf 
     sed -i "s/#write_enable=YES/write_enable=YES/" /etc/vsftpd.conf 
@@ -7,7 +16,6 @@
     sed -i "s/#chroot_local_user=YES/chroot_local_user=YES/" /etc/vsftpd.conf 
     echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf 
 
-    sed -i "s/ssl-cert-snakeoil.pem/vsftpd.pem/" /etc/vsftpd.conf 
     sed -i "s/ssl-cert-snakeoil.key/vsftpd.key/" /etc/vsftpd.conf 
     sed -i "s/ssl-cert-snakeoil.pem/vsftpd.pem/" /etc/vsftpd.conf 
     sed -i "s/ssl_enable=NO/ssl_enable=YES/" /etc/vsftpd.conf 
@@ -23,9 +31,11 @@
 
     
      sed -i "s/secure_chroot_dir=/#secure_chroot_dir=/" /etc/vsftpd.conf 
-     echo " secure_chroot_dir=/home/ftp/files" >> /etc/vsftpd.conf 
+     echo " secure_chroot_dir=/home/ftp/" >> /etc/vsftpd.conf 
 
-/usr/sbin/vsftpd
+service vsftpd restart
 
-# /usr/sbin/vsftpd /etc/vsftpd.conf
+# /usr/sbin/vsftpd
+
+/usr/sbin/vsftpd /etc/vsftpd.conf
 
