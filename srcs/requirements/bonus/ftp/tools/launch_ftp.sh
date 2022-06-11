@@ -22,11 +22,11 @@
 # fi
 
 
-USERID="$1"
+# USERID="$1"
 
-/bin/egrep  -i "^${USERID}:" /etc/passwd
+/bin/egrep  -i "^${FTP_USER}:" /etc/passwd
 if [ $? -eq 0 ]; then
-    echo "-----------\033[0;32ftp: User $USERID exists in /etc/passwd-----\033[0m"
+    echo "-----------\033[0;32ftp: User $FTP_USER exists in /etc/passwd-----\033[0m"
 else
    rm /etc/vsftpd.conf
     cp /vsftpd.conf /etc/vsftpd.conf

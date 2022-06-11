@@ -34,12 +34,11 @@ clean:
 		@sudo rm -rf /home/aybouras/data/maria_vol
 		@sudo rm -rf /home/aybouras/data/adminer_vol
 		@sudo rm -rf /home/aybouras/data/ftp_vol
+		@echo "yes" | sudo docker image prune
 
 check:
 	@echo "-----------\033[0;32mShow running containers------------\033[0m"
 		@sudo docker ps
-	@echo "\n-----------\033[0;32mShow all existing containers------------\033[0m"
-		@sudo docker ps -all
 	@echo "\n-----------\033[0;32mShow existing images------------\033[0m"
 		@sudo docker images
 	@echo "\n-----------\033[0;32mShow Volumes------------\033[0m"
