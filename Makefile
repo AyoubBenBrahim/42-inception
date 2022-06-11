@@ -9,7 +9,7 @@ build_up:
 	@mkdir /home/aybouras/data/wordpress_vol
 	@mkdir /home/aybouras/data/maria_vol
 	@mkdir /home/aybouras/data/adminer_vol/
-#	@mkdir /home/aybouras/data/ftp_vol
+	@mkdir /home/aybouras/data/ftp_vol
 
 	@cd srcs && docker-compose up --build
 

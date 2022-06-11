@@ -100,22 +100,22 @@ services:
     - "/var/lib/docker/:/var/lib/docker:ro"
     - "/dev/disk/:/dev/disk:ro"
 
-#  ftp:
-#   image: ftp:${TAG}
-#   container_name: ftp
-#   build:
-#       context: ./requirements/bonus/ftp
-#   ports:
-#    - "20:20"
-#    - "21:21"
-#    - "40000:40010"
-#   env_file:
-#   - .env
-#   volumes:
-#       - ftp_vol:/home/aybouras/ftp/files
-#   networks:
-#       - inception_network
-#   restart: always 
+ ftp:
+  image: ftp:${TAG}
+  container_name: ftp
+  build:
+      context: ./requirements/bonus/ftp
+  ports:
+   - "20:20"
+   - "21:21"
+   - "40000-40010:40000-40010"
+  env_file:
+  - .env
+  volumes:
+      - ftp_vol:/home/${FTP_USER}/ftp/files
+  networks:
+      - inception_network
+  restart: always 
  
   
 networks:
@@ -138,8 +138,8 @@ volumes:
     type: 'none'
     o: 'bind'
     device: '/home/aybouras/data/adminer_vol'
-#  ftp_vol:
-#   driver_opts:
-#     type: 'none'
-#     o: 'bind'
-#     device: '/home/aybouras/data/ftp_vol'
+ ftp_vol:
+  driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: '/home/aybouras/data/ftp_vol'
