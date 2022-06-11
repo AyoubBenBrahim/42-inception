@@ -70,23 +70,6 @@ services:
   volumes:
    - wordpress_vol:/var/www/wordpress
 
- ftp:
-  image: ftp:${TAG}
-  container_name: ftp
-  build:
-      context: ./requirements/bonus/ftp
-  ports:
-   - "20:20"
-   - "21:21"
-   - "40000:45000-45000:45000"
-  env_file:
-  - .env
-  volumes:
-      - ftp_vol:/home/aybouras/ftp
-  networks:
-      - inception_network
-  restart: always 
- 
  adminer:
   build: ./requirements/bonus/adminer
   image: adminer:${TAG}
@@ -100,6 +83,40 @@ services:
   - mariadb
   volumes:
    - adminer_vol:/var/www/adminer
+
+ cadvisor:
+  build: ./requirements/bonus/cadvisor
+  image: cadvisor:${TAG}
+  container_name: cadvisor
+  ports:
+    - 2000:2000
+  networks:
+    - inception_network
+  restart: always
+  volumes:
+    - "/:/rootfs:ro"
+    - "/var/run:/var/run:ro"
+    - "/sys:/sys:ro"
+    - "/var/lib/docker/:/var/lib/docker:ro"
+    - "/dev/disk/:/dev/disk:ro"
+
+#  ftp:
+#   image: ftp:${TAG}
+#   container_name: ftp
+#   build:
+#       context: ./requirements/bonus/ftp
+#   ports:
+#    - "20:20"
+#    - "21:21"
+#    - "40000:40010"
+#   env_file:
+#   - .env
+#   volumes:
+#       - ftp_vol:/home/aybouras/ftp/files
+#   networks:
+#       - inception_network
+#   restart: always 
+ 
   
 networks:
   inception_network:
@@ -121,8 +138,8 @@ volumes:
     type: 'none'
     o: 'bind'
     device: '/home/aybouras/data/adminer_vol'
- ftp_vol:
-  driver_opts:
-    type: 'none'
-    o: 'bind'
-    device: '/home/aybouras/data/ftp_vol'
+#  ftp_vol:
+#   driver_opts:
+#     type: 'none'
+#     o: 'bind'
+#     device: '/home/aybouras/data/ftp_vol'
