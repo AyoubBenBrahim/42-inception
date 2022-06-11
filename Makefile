@@ -1,9 +1,9 @@
 include srcs/.env
 
 down:
-	cd srcs && docker-compose down
+	cd srcs && sudo docker-compose down
 
-build_up:
+build:
 #  @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
 	@mkdir /home/aybouras/data/wordpress_vol
@@ -11,27 +11,38 @@ build_up:
 	@mkdir /home/aybouras/data/adminer_vol/
 	@mkdir /home/aybouras/data/ftp_vol
 
-	@cd srcs && docker-compose up --build
+	@cd srcs && sudo docker-compose up --build
 
 rebuild:
 # for mac : sed -i "" "bla/blabla" 
 # 	@sed -i "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
-	@cd srcs && docker-compose up --build
+	@cd srcs && sudo docker-compose up --build
 
 kill:
 	docker kill $(docker ps -q)
 
 rmi:
-	docker rmi -f $(docker image ls -q)
+	docker image rmi -f $(docker image ls -q)
 
 rm_volumes:
 	docker volume rm -f $(docker volume ls -q)
 
 clean: 
-		cd srcs && docker-compose down -v --rmi all
+		cd srcs && sudo docker-compose down -v --rmi all
 #		docker volume rm -f $(docker volume ls -q)
-		@rm -rf /home/aybouras/data/wordpress_vol
-		@rm -rf /home/aybouras/data/maria_vol
-		@rm -rf /home/aybouras/data/adminer_vol
-		@rm -rf /home/aybouras/data/ftp_vol
+		@sudo rm -rf /home/aybouras/data/wordpress_vol
+		@sudo rm -rf /home/aybouras/data/maria_vol
+		@sudo rm -rf /home/aybouras/data/adminer_vol
+		@sudo rm -rf /home/aybouras/data/ftp_vol
 
+check:
+	@echo "-----------\033[0;32mShow running containers------------\033[0m"
+		@sudo docker ps
+	@echo "\n-----------\033[0;32mShow all existing containers------------\033[0m"
+		@sudo docker ps -all
+	@echo "\n-----------\033[0;32mShow existing images------------\033[0m"
+		@sudo docker images
+	@echo "\n-----------\033[0;32mShow Volumes------------\033[0m"
+		@sudo docker volume ls
+	@echo "\n-----------\033[0;32mShow Networks------------\033[0m"
+		@sudo docker network ls
