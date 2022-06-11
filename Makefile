@@ -6,7 +6,7 @@ down:
 # rm:
 # 	cd srcs && docker-compose down -v --rmi all
 
-build_up0:
+build_up:
 #  @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
 	@mkdir /home/aybouras/data/wordpress_vol
@@ -16,7 +16,7 @@ build_up0:
 
 	@cd srcs && docker-compose up --build
 
-build_up1:
+rebuild:
 # for mac : sed -i "" "bla/blabla" 
 # @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(shell date)/g" srcs/docker-compose.yaml
 	@cd srcs && docker-compose up --build

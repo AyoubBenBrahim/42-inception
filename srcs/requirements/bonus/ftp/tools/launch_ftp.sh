@@ -10,17 +10,17 @@
 # echo "$FTP_USER" >> /etc/vsftpd.userlist
 
 
-id -u $FTP_USER  &>/dev/null 
-if [ $? -eq 1 ]; then
+# id -u $FTP_USER  &>/dev/null
+# if [ $? -eq 1 ]; then
     useradd $FTP_USER  
     echo "$FTP_USER:$FTP_PWD" |  /usr/sbin/chpasswd
+
+# fi
 
     mkdir -p /home/$FTP_USER/ftp
     chmod 777 /home/$FTP_USER/ftp
     chown $FTP_USER:$FTP_USER /home/$FTP_USER/ftp
-    echo "$FTP_USER" >> /etc/vsftpd.userlist
-fi
-
+    echo "$FTP_USER" > /etc/vsftpd.userlist
 
 
 
@@ -48,7 +48,7 @@ fi
     #  sed -i "s/secure_chroot_dir=/#secure_chroot_dir=/" /etc/vsftpd.conf 
     #  echo " secure_chroot_dir=/home/ftp/" >> /etc/vsftpd.conf 
 
-service vsftpd restart
+# service vsftpd restart
 
 /usr/sbin/vsftpd /etc/vsftpd.conf
 

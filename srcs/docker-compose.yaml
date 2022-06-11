@@ -76,8 +76,9 @@ services:
   build:
       context: ./requirements/bonus/ftp
   ports:
-      - '21:21'
-      - '20:20'
+   - "20:20"
+   - "21:21"
+   - "40000:45000-45000:45000"
   env_file:
   - .env
   volumes:
@@ -96,8 +97,7 @@ services:
     - inception_network
   restart: always
   depends_on:
-  # - wordpress
-  - nginx
+  - mariadb
   volumes:
    - adminer_vol:/var/www/adminer
   
