@@ -1,1 +1,1 @@
-{"buildTargets":["build_up0","build_up1","clean","down","kill","rm_volumes","rmi"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["build_up","clean","down","kill","rebuild","rm_volumes","rmi"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
