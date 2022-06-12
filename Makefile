@@ -3,7 +3,7 @@ include srcs/.env
 down:
 	cd srcs && sudo docker-compose down
 
-build:
+build: clean
 #  @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
 	@mkdir /home/aybouras/data/wordpress_vol
@@ -19,10 +19,10 @@ rebuild:
 	@cd srcs && sudo docker-compose up --build
 
 kill:
-	docker kill $(docker ps -q)
+	sudo docker kill $(docker ps -q)
 
 rmi:
-	docker image rmi -f $(docker image ls -q)
+	sudo docker image rmi -f $(docker image ls -q)
 
 rm_volumes:
 	docker volume rm -f $(docker volume ls -q)
@@ -45,3 +45,10 @@ check:
 		@sudo docker volume ls
 	@echo "\n-----------\033[0;32mShow Networks------------\033[0m"
 		@sudo docker network ls
+
+
+
+# adduser newuser
+# usermod -aG sudo newuser
+# vi /etc/hosts ==> newuser  ALL=(ALL) NOPASSWD:ALL
+#or newuser ALL=(ALL:ALL) ALL 

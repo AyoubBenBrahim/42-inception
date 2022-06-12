@@ -25,7 +25,9 @@ define( 'WP_REDIS_DATABASE', 0 );
 PHP
 # ***************
 
-wp core install --url=https://localhost/ --title='inception' --admin_user=$WP_ADMIN_USER --admin_email=1337@1337.ma --admin_password=$WP_ADMIN_USER_PASSWORD --path=/var/www/wordpress --allow-root 
+# wp core install --url=https://localhost/ --title='inception' --admin_user=$WP_ADMIN_USER --admin_email=1337@1337.ma --admin_password=$WP_ADMIN_USER_PASSWORD --path=/var/www/wordpress --allow-root 
+wp core install --url=https://aybouras.42.fr/ --title='inception' --admin_user=$WP_ADMIN_USER --admin_email=1337@1337.ma --admin_password=$WP_ADMIN_USER_PASSWORD --path=/var/www/wordpress --allow-root 
+
 wp user create $WP_USER inception123@gmail.com --role=subscriber  --user_pass=$WP_USER_PASSWORD  --path=/var/www/wordpress  --allow-root 
 
 wp theme install twentytwenty --path=/var/www/wordpress  --allow-root  --activate 
