@@ -6,10 +6,10 @@ down:
 build: clean
 #  @sed -i "s/BUILD_DATE.*/BUILD_DATE: $(date)/g" srcs/docker-compose.yaml
 #	@sudo sh -c "echo 127.0.0.1 $DOMAIN_NAME >> /etc/hosts"
-	@mkdir /home/aybouras/data/wordpress_vol
-	@mkdir /home/aybouras/data/maria_vol
-	@mkdir /home/aybouras/data/adminer_vol/
-	@mkdir /home/aybouras/data/ftp_vol
+	@mkdir $HOME/data/wordpress_vol
+	@mkdir $HOME/data/maria_vol
+	@mkdir $HOME/data/adminer_vol/
+	@mkdir $HOME/data/ftp_vol
 
 	@cd srcs && sudo docker-compose up --build
 
@@ -30,10 +30,10 @@ rm_volumes:
 clean: 
 		cd srcs && sudo docker-compose down -v --rmi all
 #		docker volume rm -f $(docker volume ls -q)
-		@sudo rm -rf /home/aybouras/data/wordpress_vol
-		@sudo rm -rf /home/aybouras/data/maria_vol
-		@sudo rm -rf /home/aybouras/data/adminer_vol
-		@sudo rm -rf /home/aybouras/data/ftp_vol
+		@sudo rm -rf $HOME/wordpress_vol
+		@sudo rm -rf /$HOME/data/maria_vol
+		@sudo rm -rf $HOME/data/adminer_vol
+		@sudo rm -rf $HOME/data/ftp_vol
 		@echo "yes" | sudo docker image prune
 
 check:
