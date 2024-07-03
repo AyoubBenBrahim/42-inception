@@ -1,4 +1,4 @@
-#!/bin/sh
+LOGIN#!/bin/sh
 
 until mariadb -h mariadb -P$DB_PORT -u$DB_USER -p$DB_PASSWORD -e '\c'; do
   echo >&2 "\033[41mWordpress is Waiting for mariadb - sleeping.....\033[0m"

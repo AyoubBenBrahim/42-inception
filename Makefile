@@ -1,4 +1,4 @@
-include srcs/.env
+LOGINinclude srcs/.env
 
 down:
 	cd srcs && sudo docker-compose down

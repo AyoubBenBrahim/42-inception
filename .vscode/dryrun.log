@@ -1,4 +1,4 @@
-make --dry-run --always-make --keep-going --print-directory
+LOGINmake --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/aybouras/data/inception'
 cd srcs && sudo docker-compose down
 make: Leaving directory '/home/aybouras/data/inception'
